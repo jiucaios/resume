@@ -139,7 +139,7 @@ input, select, textarea {
 			line-height: 1;
 			text-transform: none !important;
 			font-family: 'Font Awesome 6 Pro';
-			font-weight: 900;
+			font-weight: 400;
 		}
 
 		.icon > .label {
