@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>张新 · 简历</title>
+    <!-- Google Fonts: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="resume.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 返回主页按钮 -->
+<div class="top-bar">
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i> 返回主页
+    </a>
+    <a href="https://ai-chat-jiucai-zx.vercel.app" target="_blank" rel="noopener noreferrer" class="back-home">
+        去看看张新的私人助理 <i class="fas fa-robot"></i>
+    </a>
+</div>
+
+        <!-- 主卡片 -->
+        <div class="glass-card">
+            <!-- 头部区域：头像 + 基本信息 -->
+            <div class="resume-header">
+                <div class="avatar">
+                    <img src="photo.jpg" alt="张新头像">
+                </div>
+                <div class="title-section">
+                    <h1>张新 <span class="highlight">· Xin Zhang</span></h1>
+                    <div class="tagline">
+                        <span><i class="fas fa-laptop-code"></i> 全栈开发</span>
+                        <span><i class="fas fa-cloud-upload-alt"></i> 云原生探索者</span>
+                        <span><i class="fas fa-robot"></i> AI 落地实践者</span>
+                    </div>
+                    <p class="bio">
+                        2026应届毕业生，热爱技术与创新。从底层网络到AI应用，始终保持好奇与自驱力。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 双栏布局 -->
+            <div class="resume-grid">
+                <!-- 左侧栏 -->
+                <div class="left-col">
+                    <!-- 联系方式卡片 -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-address-card"></i> 联系方式</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i> <span>173 3707 5112</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i> <span>2601413168@qq.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i> <span>https://github.com/jiucaios</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i> <span>中国 · 河南</span>
+                        </div>
+                    </div>
+
+                    <!-- 技能卡片（带交互） -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-cogs"></i> 技术栈</h3>
+                        <div class="skills-wrapper">
+                            <span class="skill-tag" data-skill="OpenClaw">OpenClaw部署</span>
+                            <span class="skill-tag" data-skill="腾讯云+宝塔">云服务/宝塔</span>
+                            <span class="skill-tag" data-skill="WordPress">WordPress</span>
+                            <span class="skill-tag" data-skill="火山方舟">火山方舟API</span>
+                            <span class="skill-tag" data-skill="Python">Python自动化</span>
+                            <span class="skill-tag" data-skill="接口测试">接口测试脚本</span>
+                            <span class="skill-tag" data-skill="Slick Slider">Ai agent大模型本地部署</span>
+                            <span class="skill-tag" data-skill="局域网/交换机">网络运维</span>
+                        </div>
+                    </div>
+
+                    <!-- 语言/证书卡片 -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-language"></i> 语言与证书</h3>
+                        <div class="lang-item">中文（母语）</div>
+                        <div class="lang-item">英语（技术文档读写能力）</div>
+			<div class="lang-item">国家励志奖学金（2023）</div>
+                        <div class="lang-item">河南省优秀三好学生（2023）</div>
+                    </div>
+                </div>
+
+                <!-- 右侧栏 -->
+                <div class="right-col">
+                    <!-- 教育背景 -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-graduation-cap"></i> 教育背景</h3>
+                        <div class="edu-item">
+                            <div class="edu-header">
+                                <strong>新乡工程学院</strong> · 计算机科学与技术 本科
+                                <span class="edu-date">2024.9 – 2026.7</span>
+                            </div>
+                            <div class="edu-detail">
+                                核心课程：数据结构 90、计算机网络 91、计算机组成原理 90、操作系统 92、数据库原理 94<br>
+                                荣誉：校内奖学金
+                            </div>
+                        </div>
+                        <div class="edu-item">
+                            <div class="edu-header">
+                                <strong>河南牧业经济学院</strong> · 计算机网络技术 专科
+                                <span class="edu-date">2021.9 – 2024.7</span>
+                            </div>
+                            <div class="edu-detail">
+                                荣誉：国家励志奖学金、河南省优秀三好学生
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 项目/实践经历（按用户提供的经历整合） -->
+                    <div class="info-card">
+                        <h3><i class="fas fa-rocket"></i> 项目与实践</h3>
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <strong>OpenClaw 智能体部署</strong>
+                                <span class="exp-date">2026</span>
+                            </div>
+                            <ul>
+                                <li>将OpenClaw部署至本地虚拟机，后因内存限制迁移至阿里云，完成端口调试与QQ接入。</li>
+                                <li>解决token消耗问题，实现稳定服务。</li>
+                            </ul>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <strong>个人全栈网站 (腾讯云+宝塔+WordPress)</strong>
+                                <span class="exp-date">2022</span>
+                            </div>
+                            <ul>
+                                <li>独立完成前后端及数据库搭建，上线运行至今。</li>
+                                <li>涵盖文章发布、用户留言、后台管理等功能。</li>
+                            </ul>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <strong>Minecraft 服务器运营</strong>
+                                <span class="exp-date">2016</span>
+                            </div>
+                            <ul>
+                                <li>利用花生壳实现本地服务器公网映射，通过HTTP管理后台，吸引社区玩家并实现盈利。</li>
+                                <li>积累了产品运营与用户增长经验。</li>
+                            </ul>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <strong>AIGC 智能对话机器人</strong>
+                                <span class="exp-date">2026</span>
+                            </div>
+                            <ul>
+                                <li>基于火山方舟大模型API开发对话系统，实现AI问答功能，部署于GitHub和Vercel。</li>
+                                <li>提供完整作品集展示。</li>
+                            </ul>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <strong>接口自动化测试工具</strong>
+                                <span class="exp-date">2026</span>
+                            </div>
+                            <ul>
+                                <li>开发批量接口测试脚本，支持状态码检测、报告生成、异常捕获。</li>
+                                <li>完成前端功能测试用例设计，涵盖合法校验与边界测试。</li>
+                            </ul>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <strong>多交互轮播毛玻璃UI</strong>
+                                <span class="exp-date">2024</span>
+                            </div>
+                            <ul>
+                                <li>使用Slick Slider实现RTL布局、垂直轮播，适配移动端/PC端，添加鼠标指针状态提示。</li>
+                            </ul>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-header">
+                                <strong>学院机房升级项目</strong>
+                                <span class="exp-date">2021</span>
+                            </div>
+                            <ul>
+                                <li>负责局域网布置、交换机维护，成功复制系统传输237台设备，部署四个机房的交换机，组装30台电脑。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 交互 -->
+    <script src="resume.js"></script>
+</body>
+</html>
