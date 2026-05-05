@@ -286,7 +286,75 @@ body {
     margin-bottom: 4px;
     color: #e0ecff;
 }
+/* ===== 在线项目样式 ===== */
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
 
+.project-item:last-child {
+    margin-bottom: 0;
+}
+
+/* 普通项目悬停效果 */
+.project-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 主打项目 (Featured) 特殊样式 */
+.project-item.featured {
+    background: linear-gradient(135deg, rgba(79, 126, 179, 0.2), rgba(44, 76, 116, 0.2));
+    border: 1px solid rgba(139, 185, 254, 0.3);
+    box-shadow: 0 4px 15px rgba(79, 126, 179, 0.2);
+}
+
+.project-item.featured:hover {
+    background: linear-gradient(135deg, rgba(79, 126, 179, 0.35), rgba(44, 76, 116, 0.35));
+    box-shadow: 0 6px 20px rgba(79, 126, 179, 0.4);
+    border-color: rgba(139, 185, 254, 0.6);
+}
+
+.project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.project-title {
+    color: #ffde9c;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-desc {
+    color: #a0b0c5;
+    font-size: 0.75rem;
+}
+
+.project-action {
+    color: #8bb9fe;
+    opacity: 0.7;
+    font-size: 0.9rem;
+    transition: transform 0.2s;
+}
+
+.project-item:hover .project-action {
+    opacity: 1;
+    transform: translate(3px, -3px);
+}
 /* 响应式微调 */
 @media (max-width: 600px) {
     .glass-card {
