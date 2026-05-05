@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. 技能标签交互：点击弹出“玻璃质感”提示
+    
+    // 1. 技能标签交互：点击弹出提示
     const skillTags = document.querySelectorAll('.skill-tag');
     skillTags.forEach(tag => {
         tag.addEventListener('click', (e) => {
@@ -9,8 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. 滚动显现动画 (优化版)
-    // 避免使用 transform: translateY，防止与 CSS 中的 hover 效果冲突
+    // 2. 滚动显现动画 (最稳妥的版本)
     const cards = document.querySelectorAll('.info-card, .glass-card');
     
     const observer = new IntersectionObserver((entries) => {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('is-visible');
             }
         });
-    }, { threshold: 0.05 }); // 只要露出一点点就触发
+    }, { threshold: 0.05 });
 
     cards.forEach(card => {
         // 初始状态：透明 + 轻微放大
@@ -28,20 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         card.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
         observer.observe(card);
     });
-
-    // 3. 顶部标题打字机效果 (增加科技感)
-    const title = document.querySelector('.title-section h1');
-    if (title) {
-        const text = title.innerHTML;
-        title.innerHTML = ''; // 清空
-        let i = 0;
-        
-        // 简单的逐字显示逻辑 (保留 HTML 标签)
-        // 注意：这是一个简化的打字机效果，实际可能需要更复杂的解析来跳过标签
-        // 这里为了简单，我们直接让整个标题淡入，或者只给名字加光标
-        title.style.borderRight = "2px solid #ffde9c";
-        title.style.animation = "blinkCursor 0.75s step-end infinite alternate";
-    }
 });
 
 /**
@@ -89,4 +75,11 @@ const styleSheet = document.createElement("style");
 styleSheet.innerText = `
     @keyframes toastIn {
         from { opacity: 0; transform: translate(-50%, 20px); }
-        to { opa
+        to { opacity: 1; transform: translate(-50%, 0); }
+    }
+    @keyframes toastOut {
+        from { opacity: 1; transform: translate(-50%, 0); }
+        to { opacity: 0; transform: translate(-50%, -10px); }
+    }
+`;
+document.head.appendChild(styleSheet);
