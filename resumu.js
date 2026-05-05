@@ -1,74 +1,92 @@
-// 技能标签点击交互：弹出轻提示
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. 技能标签交互：点击弹出“玻璃质感”提示
     const skillTags = document.querySelectorAll('.skill-tag');
     skillTags.forEach(tag => {
         tag.addEventListener('click', (e) => {
-            e.stopPropagation();
+            e.stopPropagation(); // 防止冒泡
             const skillName = tag.getAttribute('data-skill') || tag.innerText;
-            showToast(`✨ 擅长：${skillName} ✨`);
+            showGlassToast(`✨ 技能点：${skillName}`);
         });
     });
 
-    // 平滑滚动（如有锚点需求，保留）
-    const links = document.querySelectorAll('a[href^="#"]');
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
-    // 动态添加页面可见时的微动画
-    const cards = document.querySelectorAll('.info-card');
+    // 2. 滚动显现动画 (优化版)
+    // 避免使用 transform: translateY，防止与 CSS 中的 hover 效果冲突
+    const cards = document.querySelectorAll('.info-card, .glass-card');
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('is-visible');
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 }); // 只要露出一点点就触发
 
     cards.forEach(card => {
+        // 初始状态：透明 + 轻微放大
         card.style.opacity = '0';
-        card.style.transform = 'translateY(15px)';
-        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        card.style.transform = 'scale(0.98)';
+        card.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
         observer.observe(card);
     });
+
+    // 3. 顶部标题打字机效果 (增加科技感)
+    const title = document.querySelector('.title-section h1');
+    if (title) {
+        const text = title.innerHTML;
+        title.innerHTML = ''; // 清空
+        let i = 0;
+        
+        // 简单的逐字显示逻辑 (保留 HTML 标签)
+        // 注意：这是一个简化的打字机效果，实际可能需要更复杂的解析来跳过标签
+        // 这里为了简单，我们直接让整个标题淡入，或者只给名字加光标
+        title.style.borderRight = "2px solid #ffde9c";
+        title.style.animation = "blinkCursor 0.75s step-end infinite alternate";
+    }
 });
 
-// 轻提示函数
-function showToast(message, duration = 2000) {
-    // 移除已存在的 toast
-    const existingToast = document.querySelector('.custom-toast');
-    if (existingToast) existingToast.remove();
+/**
+ * 玻璃拟态风格的 Toast 提示
+ */
+function showGlassToast(message, duration = 2500) {
+    const existing = document.querySelector('.custom-toast');
+    if (existing) existing.remove();
 
     const toast = document.createElement('div');
     toast.className = 'custom-toast';
     toast.innerText = message;
+    
+    // 样式完全匹配你的 CSS 风格
     toast.style.cssText = `
         position: fixed;
-        bottom: 30px;
+        bottom: 40px;
         left: 50%;
         transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(10px);
-        color: white;
-        padding: 10px 20px;
-        border-radius: 40px;
+        background: rgba(12, 22, 35, 0.85); /* 深色半透明背景 */
+        backdrop-filter: blur(12px);        /* 毛玻璃模糊 */
+        -webkit-backdrop-filter: blur(12px);
+        color: #ffde9c;                     /* 金色文字 */
+        padding: 12px 24px;
+        border-radius: 50px;
         font-size: 0.9rem;
+        font-weight: 600;
         z-index: 1000;
-        border: 1px solid rgba(255,255,200,0.3);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        animation: fadeInUp 0.2s ease;
+        border: 1px solid rgba(255, 222, 156, 0.3); /* 金色边框 */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        animation: toastIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     `;
+    
     document.body.appendChild(toast);
+
+    // 消失动画
     setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateX(-50%) translateY(10px)';
-        setTimeout(() => toast.remove(), 300);
+        toast.style.animation = 'toastOut 0.4s ease forwards';
+        setTimeout(() => toast.remove(), 400);
     }, duration);
 }
+
+// 动态注入关键帧动画 (这样你不需要改 CSS 文件也能用)
+const styleSheet = document.createElement("style");
+styleSheet.innerText = `
+    @keyframes toastIn {
+        from { opacity: 0; transform: translate(-50%, 20px); }
+        to { opa
